@@ -24,7 +24,7 @@ public abstract class ValidadorPatente {
 			return Boolean.FALSE;
 		}
 	}
-
+	
 	static boolean isPatenteMoto(String patente) {
 		return (isPatenteMotoVieja(patente) || isPatenteMotoNueva(patente));
 	}
