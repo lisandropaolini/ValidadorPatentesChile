@@ -13,13 +13,11 @@ public abstract class ValidadorPatente {
 			TipoVehiculo tipoVehiculo) {
 
 		if (tipoVehiculo == null) 
-			return (isPatenteMoto(patente) || isPatenteAuto(patente) || isPatenteCArrastre(patente));
+			return (isPatenteMoto(patente) || isPatenteAuto(patente));
 
 		switch (tipoVehiculo) {
 		case MOTO:
 			return isPatenteMoto(patente);
-		case CARRO_ARRASTRE:
-			return isPatenteCArrastre(patente);
 		case AUTO:
 			return isPatenteAuto(patente);
 		default:
@@ -39,10 +37,6 @@ public abstract class ValidadorPatente {
 	static boolean isPatenteMotoNueva(String patente) {
 		return (isPatternMatcher(Constants.EXP_MOTO_NUEVA_5, patente) 
 				|| isPatternMatcher(Constants.EXP_MOTO_NUEVA_6, patente));
-	}
-
-	static boolean isPatenteCArrastre(String patente) {
-		return isPatternMatcher(Constants.EXP_C_ARRASTRE, patente);
 	}
 
 	static boolean isPatenteAuto(String patente) {
