@@ -51,7 +51,7 @@ public abstract class ValidadorPatente {
 		return isPatternMatcher(Constants.EXP_AUTO_NUEVO, patente);
 	}
 
-	static boolean isPatternMatcher(String exp, String val) {
+	static boolean isPatternMatcher(String exp, String val) throws NullPointerException{
 		Pattern p = Pattern.compile(exp);
 		Matcher m = p.matcher(val);
 		return m.matches();
