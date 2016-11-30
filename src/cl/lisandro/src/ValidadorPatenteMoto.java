@@ -1,6 +1,7 @@
 package cl.lisandro.src;
 
-public abstract class NormalizadorPatenteMoto {
+
+public abstract class ValidadorPatenteMoto {
 
 	/**
 	 * valida que sea patente de moto y tenga una O en el 3er o 4to lugar y lo cambia por un cero 0

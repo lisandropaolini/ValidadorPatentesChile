@@ -3,13 +3,15 @@ package cl.lisandro.src;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import cl.lisandro.src.enums.TipoVehiculo;
+
 public abstract class ValidadorPatente {
 
-	public static Boolean isPatenteValida(String patente) {
+	static Boolean isPatenteValida(String patente) {
 		return isPatenteValida(patente, null);
 	}
 
-	public static Boolean isPatenteValida(String patente,
+	static Boolean isPatenteValida(String patente,
 			TipoVehiculo tipoVehiculo) {
 
 		if (tipoVehiculo == null) 

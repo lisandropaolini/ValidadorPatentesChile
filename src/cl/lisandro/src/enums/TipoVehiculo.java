@@ -1,4 +1,4 @@
-package cl.lisandro.src;
+package cl.lisandro.src.enums;
 
 public enum TipoVehiculo {
 	AUTO, MOTO;
