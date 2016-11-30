@@ -13,7 +13,7 @@ public abstract class NormalizadorPatenteMoto {
 		if (ValidadorPatente.isPatternMatcher(Constants.EXP_MOTO_NUEVA_CON_O, patente) )
 			retorno = patente.substring(0,3) + "0" + patente.substring(4,6);
 		else if (ValidadorPatente.isPatternMatcher(Constants.EXP_MOTO_VIEJA_CON_O, patente) )
-			retorno = patente.substring(0,2) + "0" + patente.substring(3,5);
+			retorno = patente.substring(0,3) + "0" + patente.substring(3,6);
 		
 		return retorno;
 	}

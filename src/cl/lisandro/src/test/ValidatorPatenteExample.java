@@ -7,7 +7,7 @@ public class ValidatorPatenteExample {
 
 	public static void main(String[] args) {
 
-		String patente = "XXO34";
+		String patente = "XXLO34";
 		String mostrar = "Entrada: " + patente + " :: Salida: ";
 		System.out.println(mostrar + ValidadorPatente.isPatenteValida(patente));
 		
