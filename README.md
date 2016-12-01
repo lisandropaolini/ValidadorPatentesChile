@@ -9,19 +9,24 @@ segun lo reglamentado...
 
 las patentes de automoviles vijentes pueden ser de formato
 
-LLnnnn con serie de AA1000 a ZZ9999
-LLLLnn con serie de BBBB10 a ZZZZ99
+	LLnnnn con serie de AA1000 a ZZ9999
+	LLLLnn con serie de BBBB10 a ZZZZ99
 
 las patentes de moto vigentes pueden ser de formato
 
-LL0nnn con serie AA0000 a ZZ0999
-LLL0nn con serie BBB000 a ZZZ099
+	LL0nnn con serie AA0000 a ZZ0999
+	LLL0nn con serie BBB000 a ZZZ099
 
 
-falta generar doc del api
+API
 
-fuente: https://es.wikipedia.org/wiki/Matr%C3%ADculas_automovil%C3%ADsticas_de_Chile
+	String patente = "XXXO12";
+	TipoVehiculo tipo = TipoVehiculo.MOTO;
 
+	if( !tipo.isValid(patente)){
+			patente = tipo.setNormalized(patente);
+			patente = tipo.setComplete(patente);
+		}
 
 slds
 lp
