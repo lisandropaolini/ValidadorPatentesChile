@@ -1,30 +1,6 @@
 package cl.lisandro.src;
 
-import cl.lisandro.src.enums.TipoVehiculo;
-
 abstract class ValidadorPatente {
-
-	static Boolean isPatenteValida(String patente) {
-		return isPatenteValida(patente, null);
-	}
-
-	static Boolean isPatenteValida(String patente, TipoVehiculo tipoVehiculo) {
-		try {
-			if (tipoVehiculo == null)
-				return (isPatenteMoto(patente) || isPatenteAuto(patente));
-
-			switch (tipoVehiculo) {
-			case MOTO:
-				return isPatenteMoto(patente);
-			case AUTO:
-				return isPatenteAuto(patente);
-			default:
-				return Boolean.FALSE;
-			}
-		} catch (Exception e) {
-			return Boolean.FALSE;
-		}
-	}
 
 	static boolean isPatenteMoto(String patente) {
 		try {
@@ -34,7 +10,7 @@ abstract class ValidadorPatente {
 		}
 	}
 
-	static boolean isPatenteMotoVieja(String patente) {
+	private static boolean isPatenteMotoVieja(String patente) {
 		try {
 			return (Util.isPatternMatcher(Constants.EXP_MOTO_VIEJA_5, patente) || Util
 					.isPatternMatcher(Constants.EXP_MOTO_VIEJA_6, patente));
@@ -43,7 +19,7 @@ abstract class ValidadorPatente {
 		}
 	}
 
-	static boolean isPatenteMotoNueva(String patente) {
+	private static boolean isPatenteMotoNueva(String patente) {
 		try {
 			return (Util.isPatternMatcher(Constants.EXP_MOTO_NUEVA_5, patente) || Util
 					.isPatternMatcher(Constants.EXP_MOTO_NUEVA_6, patente));
@@ -69,7 +45,7 @@ abstract class ValidadorPatente {
 		}
 	}
 
-	static boolean isPatenteAutoViejo(String patente) {
+	private static boolean isPatenteAutoViejo(String patente) {
 		try {
 			return Util.isPatternMatcher(Constants.EXP_AUTO_VIEJO, patente);
 		} catch (Exception e) {
@@ -77,12 +53,48 @@ abstract class ValidadorPatente {
 		}
 	}
 
-	static boolean isPatenteAutoNuevo(String patente) {
+	private static boolean isPatenteAutoNuevo(String patente) {
 		try {
 			return Util.isPatternMatcher(Constants.EXP_AUTO_NUEVO, patente);
 		} catch (Exception e) {
 			return Boolean.FALSE;
 		}
+	}
+
+	static String getComplete(String patente) {
+			return patenteMotoComplete(patente);
+	}
+
+	private static String patenteMotoComplete(String patente) {
+		return (patente.substring(0, 3) + "0" + patente.substring(3, 5));
+	}
+
+	static String getNormalized(String patente) {
+		return getNormalizedMatch(patente);
+	}
+
+	static Boolean isBeNormalized(String patente) {
+		try {
+			String retorno = null;
+
+			retorno = getNormalizedMatch(patente);
+
+			if (retorno != null)
+				return Boolean.TRUE;
+
+		} catch (Exception e) {
+			return Boolean.FALSE;
+		}
+		return Boolean.FALSE;
+	}
+
+	private static String getNormalizedMatch(String patente) {
+		if (Util.isPatternMatcher(Constants.EXP_MOTO_NUEVA_CON_O, patente))
+			return patente.substring(0, 3) + "0" + patente.substring(4, 6);
+		else if (Util.isPatternMatcher(Constants.EXP_MOTO_VIEJA_CON_O, patente))
+			return patente.substring(0, 3) + "0" + patente.substring(3, 6);
+		else
+			return null;
 	}
 
 }
